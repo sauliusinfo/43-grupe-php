@@ -55,6 +55,7 @@ services:
   npm:
     image: node:latest
     working_dir: /var/www/html
-    entrypoint: ['npm']
+    # entrypoint: ['npm']
+    command: nodemon server.js
     volumes:
       - ./src:/var/www/html

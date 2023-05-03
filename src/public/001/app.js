@@ -1,1 +1,2 @@
-console.log('Labas, rytas!');
+console.log('# --- #');
+console.log('Labas, rytas !!!');
