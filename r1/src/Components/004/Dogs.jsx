@@ -15,7 +15,7 @@ export default function Dogs() {
         <div className="sq-bin">
             {
             dogs
-            .sort((a, b) => a.localeCompare(b))
+            .sort((t1, t2) => t1.localeCompare(t2))
             .map((d, i) => <div index={i} className="sq" style={{borderRadius: '50%'}}>{i+1} - {d}</div>)
             }
         </div>
