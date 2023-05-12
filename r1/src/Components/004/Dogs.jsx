@@ -6,14 +6,19 @@ export default function Dogs() {
 
     return (
         <>
-            <Style />
-            <div className="sq-bin">
-
-                {
-                    dogs.map((d, i) => <div key={i} className="sq">{d}</div>)
-                }
-
-            </div>
+        <Style />
+        <div className="sq-bin">
+            {
+            dogs.map((d, i) => <div index={i} className="sq" style={{marginBottom: '20px'}}>{d}</div>)
+            }
+        </div>
+        <div className="sq-bin">
+            {
+            dogs
+            .sort((a, b) => a.localeCompare(b))
+            .map((d, i) => <div index={i} className="sq" style={{borderRadius: '50%'}}>{i+1} - {d}</div>)
+            }
+        </div>
         </>
     );
 }

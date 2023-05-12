@@ -40,7 +40,7 @@
 .sq-bin {
   display: flex;
   justify-content: center;
-  width: 80%;
+  width: 100%;
   flex-wrap: wrap;
   gap: 20px;
   .sq {
@@ -54,5 +54,6 @@
       letter-spacing: 3px;
       background-color: #80808080;
       border-radius: 10px;
+      // border-radius: 50%;
   }
 }
