@@ -1,121 +1,149 @@
-import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.scss';
+import './buttons.scss';
+import Create from './Components/crud/Create';
+import { useEffect, useState } from 'react';
+import { crudCreate, crudDelete, crudEdit, crudRead } from './Functions/localStorageCrud';
+import List from './Components/crud/List';
+import Delete from './Components/crud/Delete';
+import Edit from './Components/crud/Edit';
+import Messages from './Components/crud/Messages';
+import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
 
-const App = () => {
-  const [saskaitos, setSaskaitos] = useState([]);
-  const [vardas, setVardas] = useState('');
-  const [pavarde, setPavarde] = useState('');
-  const [naujaSuma, setNaujaSuma] = useState(0);
+const KEY = 'myFancyColors';
+const API = 'https://www.thecolorapi.com/id?hex=';
 
-  // Saskaitos parinkimas
-  const [pasirinktaSaskaita, setPasirinktaSaskaita] = useState(null);
+export default function App() {
 
-  // Gaunami duomenys is LocalStorage
-  useEffect(() => {
-    const storedSaskaitos = localStorage.getItem('saskaitos');
-    if (storedSaskaitos) {
-      setSaskaitos(JSON.parse(storedSaskaitos));
+    const [listUpdate, setListUpdate] = useState(Date.now());
+    const [colors, setColors] = useState(null);
+    const [createData, setCreateData] = useState(null);
+    const [deleteModalData, setDeleteModalData] = useState(null);
+    const [deleteData, setDeleteData] = useState(null);
+    const [editModalData, setEditModalData] = useState(null);
+    const [editData, setEditData] = useState(null);
+    const [messages, setMessages] = useState([]);
+    const [sort, setSort] = useState('default');
+    const [filter, setFilter] = useState('');
+
+
+    //R read
+    useEffect(_ => {
+        setColors(crudRead(KEY).map((c, i) => ({...c, row: i, show: true})));
+    }, [listUpdate]);
+
+    //C create
+    useEffect(_ => {
+        if (null === createData) {
+            return;
+        }
+        axios.get(API + createData.color.substring(1))
+            .then(res => {
+                createData.title = res.data.name.value;
+                crudCreate(KEY, createData);
+                setListUpdate(Date.now());
+                msg('New color was creates', 'ok');
+            });
+
+    }, [createData]);
+
+    //U update
+    useEffect(_ => {
+        if (null === editData) {
+            return;
+        }
+        axios.get(API + editData.color.substring(1))
+            .then(res => {
+                editData.title = res.data.name.value;
+                crudEdit(KEY, editData, editData.id);
+                setListUpdate(Date.now());
+                msg('Color was edited', 'ok');
+            });
+    }, [editData]);
+
+    //D deleate
+    useEffect(_ => {
+        if (null === deleteData) {
+            return;
+        }
+        crudDelete(KEY, deleteData.id);
+        setListUpdate(Date.now());
+        msg('Color has gone', 'ok');
+    }, [deleteData]);
+
+    useEffect(() => {
+        if (sort === 'default') {
+            setColors(c => [...c].sort((a, b) => a.row - b.row));
+        } else if(sort === 'up') {
+            setColors(c => [...c].sort((a, b) => a.title.localeCompare(b.title)));
+        } else {
+            setColors(c => [...c].sort((b, a) => a.title.localeCompare(b.title)));
+        }
+
+    }, [sort]);
+
+    useEffect(() => {
+
+        setColors(c => c.map(c => c.title.toLowerCase().search(filter.toLowerCase()) !== -1 ? {...c, show: true} : {...c, show: false}))
+
+    }, [filter]);
+
+    const msg = (text, type) => {
+        const id = uuidv4();
+        const message = {
+            id,
+            text,
+            type
+        }
+        setMessages(m => [...m, message]);
+        setTimeout(_ => setMessages(m => m.filter(m => m.id !== id)), 5000);
     }
-  }, []);
 
-  // Irasomi duomenys i LocalStorage
-  useEffect(() => {
-    localStorage.setItem('saskaitos', JSON.stringify(saskaitos));
-  }, [saskaitos]);
-
-  const pridetiSaskaita = () => {
-    const naujaSaskaita = {
-      vardas,
-      pavarde,
-      suma: 0,
-    };
-
-    setSaskaitos([...saskaitos, naujaSaskaita]);
-    setVardas('');
-    setPavarde('');
-  };
-  
-  const istrintiSaskaita = (index) => {
-    const saskaita = saskaitos[index];
-  
-    if (saskaita.suma === 0) {
-      const naujosSaskaitos = [...saskaitos];
-      naujosSaskaitos.splice(index, 1);
-      setSaskaitos(naujosSaskaitos);
-    } else {
-      alert('Negalima ištrinti sąskaitos, kurioje yra lėšų!');
+    const doSort = _ => {
+        setSort(s => {
+            switch (s) {
+                case 'default': return 'up';
+                case 'up': return 'down';
+                default: return 'default'
+            }
+        });
     }
-  };
 
-  const pridetiLesas = (index) => {
-    const naujosSaskaitos = [...saskaitos];
-    naujosSaskaitos[index].suma += naujaSuma;
-    setSaskaitos(naujosSaskaitos);
-    setNaujaSuma(0);
-  };
 
-  const nuskaiciuotiLesas = (index) => {
-    const naujosSaskaitos = [...saskaitos];
-    const updatedSuma = naujosSaskaitos[index].suma - naujaSuma;
-  
-    if (updatedSuma >= 0) {
-      naujosSaskaitos[index].suma = updatedSuma;
-      setSaskaitos(naujosSaskaitos);
-      setNaujaSuma(0);
-    } else {
-      alert('Neužtenka sąskaitoje lėšų!');
-    }
-  };
 
-  return (
-    <div style={{maxWidth:'50%'}}>
-      <h1>:: SAULĖS MIESTO BANKAS ::</h1>
-      <h2>Naujos sąskaitos sukūrimas</h2>
-      <label>Vardas:</label>
-      <input type="text" value={vardas} onChange={(e) => setVardas(e.target.value)} />
-      <label>Pavardė:</label>
-      <input type="text" value={pavarde} onChange={(e) => setPavarde(e.target.value)} />
-      <button onClick={pridetiSaskaita}>Sukurti sąskaitą</button>
-      <hr />
-      <table>
-        <thead>
-          <tr>
-            <th>Vardas</th>
-            <th>Pavardė</th>
-            <th>Sąskaitos suma</th>
-            <th>Veiksmai</th>
-          </tr>
-        </thead>
-        <tbody>
-          {saskaitos
-            .sort((a, b) => a.pavarde.localeCompare(b.pavarde))
-            .map((saskaita, index) => (
-              <tr key={index}>
-                <td>{saskaita.vardas}</td>
-                <td>{saskaita.pavarde}</td>
-                <td>{saskaita.suma}{' Eur'}</td>
-                <td>
-                  {pasirinktaSaskaita === index ? (
-                    <>
-                      <input type='number'
-                        // value={naujaSuma.toString()}
-                        value={naujaSuma !== 0 ? naujaSuma.toString() : ""}
-                        onChange={(e) => setNaujaSuma(parseInt(e.target.value))}
-                        placeholder='pvz: 100'
-                      />
-                      <button onClick={() => pridetiLesas(index)}>Pridėti lėšas</button>
-                      <button onClick={() => nuskaiciuotiLesas(index)}>Nuskaičiuoti lėšas</button>
-                    </>
-                  ) : (
-                    <button onClick={() => setPasirinktaSaskaita(index)}>Pasirinkti</button>
-                  )}
-                  <button onClick={() => istrintiSaskaita(index)}>Ištrinti</button>
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
-    </div>
-  );
-};
+    return (
+        <>
+            <div className="container">
+                <div className="row">
+                    <div className="col-4">
+                        <Create setCreateData={setCreateData} />
+                    </div>
+                    <div className="col-8">
+                        <List
+                            colors={colors}
+                            setDeleteModalData={setDeleteModalData}
+                            setEditModalData={setEditModalData}
+                            sort={sort}
+                            doSort={doSort}
+                            filter={filter}
+                            setFilter={setFilter}
+                        />
+                    </div>
+                </div>
+            </div>
+            <Delete
+                deleteModalData={deleteModalData}
+                setDeleteModalData={setDeleteModalData}
+                setDeleteData={setDeleteData}
+            />
+            <Edit
+                editModalData={editModalData}
+                setEditModalData={setEditModalData}
+                setEditData={setEditData}
+            />
+            <Messages messages={messages} />
+        </>
+    );
 
-export default App;
+}
