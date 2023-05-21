@@ -6,18 +6,19 @@ const App = _ => {
   const [pavarde, setPavarde] = useState('');
   const [naujaSuma, setNaujaSuma] = useState(0);
   const [pasirinktaSaskaita, setPasirinktaSaskaita] = useState(null);
-  
+
   // Gaunami duomenys is LocalStorage
   useEffect( _ => {
     const storedSaskaitos = localStorage.getItem('saskaitos');
     if (storedSaskaitos) {
-        setSaskaitos(JSON.parse(storedSaskaitos));
+      setSaskaitos(JSON.parse(storedSaskaitos));
     }
   }, []);
-
-  const writeDataToLocalStorage = (data) => {
-    localStorage.setItem('saskaitos', JSON.stringify(data));
-  };
+  
+  // Irasomi duomenys i Local Storage
+  useEffect( _ => {
+    localStorage.setItem('saskaitos', JSON.stringify(saskaitos));
+  }, [saskaitos]);
 
   const pridetiSaskaita = _ => {
     const naujaSaskaita = {
@@ -29,19 +30,15 @@ const App = _ => {
     setSaskaitos([...saskaitos, naujaSaskaita]);
     setVardas('');
     setPavarde('');
-
-    writeDataToLocalStorage([...saskaitos, naujaSaskaita]);
   };
-
+  
   const istrintiSaskaita = (index) => {
     const saskaita = saskaitos[index];
-
+  
     if (saskaita.suma === 0) {
       const naujosSaskaitos = [...saskaitos];
       naujosSaskaitos.splice(index, 1);
       setSaskaitos(naujosSaskaitos);
-
-      writeDataToLocalStorage(naujosSaskaitos);
     } else {
       alert('Negalima ištrinti sąskaitos, kurioje yra lėšų!');
     }
@@ -52,20 +49,16 @@ const App = _ => {
     naujosSaskaitos[index].suma += naujaSuma;
     setSaskaitos(naujosSaskaitos);
     setNaujaSuma(0);
-
-    writeDataToLocalStorage(naujosSaskaitos);
   };
 
   const nuskaiciuotiLesas = (index) => {
     const naujosSaskaitos = [...saskaitos];
     const updatedSuma = naujosSaskaitos[index].suma - naujaSuma;
-
+  
     if (updatedSuma >= 0) {
       naujosSaskaitos[index].suma = updatedSuma;
       setSaskaitos(naujosSaskaitos);
       setNaujaSuma(0);
-
-      writeDataToLocalStorage(naujosSaskaitos);
     } else {
       alert('Neužtenka sąskaitoje lėšų!');
     }
@@ -106,13 +99,13 @@ const App = _ => {
                         onChange={(e) => setNaujaSuma(parseInt(e.target.value))}
                         placeholder='pvz: 100'
                       />
-                      <button onClick={_ => pridetiLesas(index)}>Pridėti lėšas</button>
-                      <button onClick={_ => nuskaiciuotiLesas(index)}>Nuskaičiuoti lėšas</button>
+                      <button onClick={ _ => pridetiLesas(index)}>Pridėti lėšas</button>
+                      <button onClick={ _ => nuskaiciuotiLesas(index)}>Nuskaičiuoti lėšas</button>
                     </>
                   ) : (
-                    <button onClick={_ => setPasirinktaSaskaita(index)}>Pasirinkti</button>
+                    <button onClick={ _ => setPasirinktaSaskaita(index)}>Pasirinkti</button>
                   )}
-                  <button onClick={_ => istrintiSaskaita(index)}>Ištrinti</button>
+                  <button onClick={ _ => istrintiSaskaita(index)}>Ištrinti</button>
                 </td>
               </tr>
             ))}
