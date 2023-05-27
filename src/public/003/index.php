@@ -1,9 +1,15 @@
 <?php
-
-// Sumodeliuokite vinies kalimą. Įkalimo gylį sumodeliuokite pasinaudodami rand() funkcija. Vinies ilgis 8.5cm (pilnai sulenda į lentą).
-// “Įkalkite” 5 vinis mažais smūgiais. Vienas smūgis vinį įkala 5-20 mm. Suskaičiuokite kiek reikia smūgių.
-// “Įkalkite” 5 vinis dideliais smūgiais. Vienas smūgis vinį įkala 20-30 mm, bet yra 50% tikimybė (pasinaudokite rand() 
-// funkcija tikimybei sumodeliuoti), kad smūgis nepataikys į vinį. Suskaičiuokite kiek reikia smūgių.
+echo
+'<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciklai</title>
+</head>
+<body><h2>:: Ciklai ::</h2>';
+// -->
 
 $vinies_ilgis = 8.5; // cm
 $smugiu_sk = 0;
@@ -35,3 +41,9 @@ while ($vinies_ilgis > 0) {
 }
 
 echo "<br> Dideliais smūgiais reikės $smugiu_sk smūgių.";
+
+
+// <--
+echo
+'</body>
+</html>';
