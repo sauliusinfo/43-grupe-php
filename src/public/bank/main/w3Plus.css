@@ -1,0 +1,55 @@
+body,h1,h2,h3,h4,h5,h6 {
+    font-family: arial, sans-serif;
+    color: grey;
+}
+body {
+    font-size:16px;
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    color: crimson;
+    text-decoration: none;
+}
+.w3-half img {
+    margin-bottom:-6px;
+    margin-top:16px;
+    opacity:0.8;
+    cursor:pointer;
+}
+.w3-half img:hover {
+    opacity:1;
+}
+.w3-input {
+    width: 25%;
+}
+/*-->*/
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+.fade-in {
+    animation: fadeIn 3s ease-in;
+}
+/*<--*/
+table {
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid grey;
+    padding: 8px;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.message {
+    text-align: center;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
