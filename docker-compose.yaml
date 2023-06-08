@@ -58,4 +58,4 @@ services:
     entrypoint: ['npm']
     command: nodemon server.js
     volumes:
-      - ./src:/var/www/html
+      - ./src/public/testas:/var/www/html # setted for testas!
