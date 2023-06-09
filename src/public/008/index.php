@@ -1,5 +1,4 @@
 <?php
-
 echo '<pre>';
 
 // 1 task
@@ -9,18 +8,14 @@ require __DIR__ . '/Kibiras1.php';
 
 $kibiras = new Kibiras1;
 
-var_dump($kibiras);
+$kibiras->prideti1Akmeni();
+$kibiras->prideti1Akmeni();
 
-$kibiras->prideti1Akmeni(1);
-var_dump($kibiras);
+$kibiras->pridetiDaugAkmenu(5);
+$kibiras->pridetiDaugAkmenu(10);
 
-$kibiras->pridetiDaugAkmenu(20);
-var_dump($kibiras);
+echo 'is viso ' . $kiekisKibire = $kibiras->kiekPririnktaAkmenu() . PHP_EOL . PHP_EOL;
 
-$kiekisKibire = $kibiras->kiekPririnktaAkmenu();
-var_dump($kibiras);
-
-echo 'is viso ' . $kiekisKibire;
 
 // 2 task
 echo '<div>2</div>';
@@ -33,6 +28,7 @@ $pinigine->ideti(2);
 $pinigine->ideti(5);
 
 $pinigine->skaiciuoti();
+
 
 // 3 task
 echo '<div>3</div>';
