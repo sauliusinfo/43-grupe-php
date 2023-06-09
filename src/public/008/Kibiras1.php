@@ -6,10 +6,10 @@ class Kibiras1 {
 
     public function prideti1Akmeni() : int
     {
-        return $this->akmenuKiekis++;
+        return $this->akmenuKiekis += 1;
     }
 
-    public function pridetiDaugAkmenu($kiekis) :int
+    public function pridetiDaugAkmenu($kiekis) : int
     {
         return $this->akmenuKiekis += $kiekis;
     }
