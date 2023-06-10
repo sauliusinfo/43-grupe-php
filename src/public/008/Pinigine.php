@@ -18,6 +18,7 @@ class Pinigine {
     public function skaiciuoti() : void
     {
         echo "Popieriniai pinigai: " . $this->popieriniaiPinigai . PHP_EOL;
-        echo "Metaliniai pinigai: " . $this->metaliniaiPinigai . PHP_EOL . PHP_EOL;
+        echo "Metaliniai pinigai: " . $this->metaliniaiPinigai . PHP_EOL;
+        echo PHP_EOL;
     }
 }
