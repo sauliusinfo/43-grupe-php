@@ -19,3 +19,4 @@ Open webpack.mix.js and add the following code:
 
 # Bootstrap 5 install
 # `npm install bootstrap`
+# `npm i bootstrap-icons`
