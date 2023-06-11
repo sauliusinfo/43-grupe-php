@@ -10,8 +10,8 @@ session_start()
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="./app.css">
-    <script type="text/javascript" src="./app.js"></script>
+    <link rel="stylesheet" href="app.css">
+    <script type="text/javascript" src="app.js"></script>
 </head>
 <body>
     <header class=""><?php require __DIR__ . '/hero.php'; ?></header>
