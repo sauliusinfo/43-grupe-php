@@ -3,7 +3,7 @@
 class MyUser
 {
     public $userName;
-    private $userEmail; // private or protected(lower)
+    private $userEmail; // private or protected
 
     public function __construct($enterUser, $enterEmail)
     {

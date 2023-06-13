@@ -51,5 +51,13 @@ $pinigine->ideti(3);
 $pinigine->skaiciuoti();
 
 
-// 3 task
+// 4 task
 echo '<div>3</div>';
+
+require __DIR__ . '/Kibiras3.php';
+
+$kibiras3 = new Kibiras3(rand(2,5));
+
+echo $kibiras3->prideti1Akmeni();
+
+//echo 'metodai - '; print_r(get_class_methods('Kibiras3'));

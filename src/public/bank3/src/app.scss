@@ -28,9 +28,25 @@
     }
 
 .btn {
+    &.add {
+        &::after {
+            content: '\2295';
+            font-size: 2.1em;
+            line-height: 1;
+        }
+    }
+    &.minus {
+        &::after {
+            content: '\2296';
+            font-size: 2.1em;
+            line-height: 1;
+        }
+    }
     &.delete {
         &::after {
-            content: '\F629';
+            content: '\2297';
+            font-size: 2.1em;
+            line-height: 1;
         }
         }
     }

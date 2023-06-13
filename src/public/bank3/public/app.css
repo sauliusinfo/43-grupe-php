@@ -12005,6 +12005,18 @@ textarea.form-control-lg {
   vertical-align: middle;
 }
 
+.btn.add::after {
+  content: "⊕";
+  font-size: 2.1em;
+  line-height: 1;
+}
+.btn.minus::after {
+  content: "⊖";
+  font-size: 2.1em;
+  line-height: 1;
+}
 .btn.delete::after {
-  content: "\f629";
+  content: "⊗";
+  font-size: 2.1em;
+  line-height: 1;
 }

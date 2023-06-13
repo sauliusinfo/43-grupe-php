@@ -41,13 +41,16 @@ session_start()
                 <td>Petraitis</td>
                 <td>30012000849</td>
                 <td>LT1234567890123456789</td>
-                <td><button type="button" class="btn btn-outline-success">+</button></td>
-                <td><button type="button" class="btn btn-outline-danger">-</button></td>
-                <td><button type="button" class="btn btn-outline-danger delete"></button></td>
+                <td><button type="button" class="btn btn-outline-success add"
+                  onclick=""></button></td>
+                <td><button type="button" class="btn btn-outline-danger minus"
+                  onclick=""></button></td>
+                <td><button type="button" class="btn btn-outline-danger delete"
+                  onclick=""></button></td>
             </tr>
         </tbody>
     </table>
-    
+
     <button type="button" class="btn btn-outline-secondary">Support</i></button>
   </div>
 </section>
