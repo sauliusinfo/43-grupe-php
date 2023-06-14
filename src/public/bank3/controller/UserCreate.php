@@ -21,8 +21,7 @@ class UserCreate {
                 throw new Exception('Error decoding JSON data.');
             }
         }
-
-        // Append new user data to existing data
+        
         $existingData[] = $userData;
         
         $jsonData = json_encode($existingData);
