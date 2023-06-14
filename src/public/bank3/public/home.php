@@ -1,6 +1,11 @@
 <?php
 
-session_start()
+session_start();
+
+if (!isset($_SESSION['name'])) {
+  header('Location: http://localhost/bank3/index.php');
+  die;
+}
 
 ?>
 
@@ -19,7 +24,7 @@ session_start()
 <!-- TOP SECTION -->
 <section>
   <div class="container-fluid hero d-flex flex-column justify-content-between align-items-center py-3" id="home">
-    <h3 class="text-light text-center mt-5">Clients, Accounts, More..</h3>
+    <h3 class="text-light text-center mt-5">Accounts of clients</h3>
     
     <table class="table table-dark table-sm table-transparent">
         <thead>
@@ -29,9 +34,9 @@ session_start()
                 <th>SURNAME</th>
                 <th>CARD ID</th>
                 <th>ACCOUNT NR</th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th>ADD</th>
+                <th>MINUS</th>
+                <th>DEL</th>
             </tr>
         </thead>
         <tbody>
