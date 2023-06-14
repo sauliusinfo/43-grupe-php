@@ -5,7 +5,7 @@ class UserLogin {
     public function checkSession() : void
     {
         if (isset($_SESSION['name']) && !isset($_GET['logout'])) {
-            header('Location: ./bank3/');
+            header('Location: http://localhost/bank3/');
             die;
         }
     }
@@ -15,7 +15,7 @@ class UserLogin {
         if (isset($_GET['logout'])) {
             unset($_SESSION['name']);
             $this->setMsg('Logged out');
-            header('Location: ./bank3/index.php');
+            header('Location: http://localhost/bank3/index.php');
             die;
         }
     }
@@ -29,12 +29,12 @@ class UserLogin {
             foreach($users as $user) {
                 if ($user['name'] == $_POST['name'] && $user['passwd'] == md5($_POST['passwd'])) {
                     $_SESSION['name'] = $user['name'];
-                    header('Location: ./bank3/public/home.php');
+                    header('Location: http://localhost/bank3/public/home.php');
                     die;
                 }
             }
             $this->setMsg('Invalid password or username');
-            header('Location: ./bank3/index.php');
+            header('Location: http://localhost/bank3/index.php');
             die;
         }
     }
