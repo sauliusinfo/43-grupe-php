@@ -14,7 +14,7 @@ class UserLogin {
     {
         if (isset($_GET['logout'])) {
             unset($_SESSION['name']);
-            $this->setMsg('Logged out');
+            $this->setMsg('You are successfully logged out! Come back soon.');
             header('Location: http://localhost/bank3/index.php');
             die;
         }
@@ -33,7 +33,7 @@ class UserLogin {
                     die;
                 }
             }
-            $this->setMsg('Invalid password or username');
+            $this->setMsg('Invalid email address or password! Try again.');
             header('Location: http://localhost/bank3/index.php');
             die;
         }

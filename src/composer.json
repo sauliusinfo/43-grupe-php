@@ -1,0 +1,10 @@
+{
+    "name": "sair/src",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Sair\\Src\\": "src/"
+        }
+    },
+    "require": {}
+}

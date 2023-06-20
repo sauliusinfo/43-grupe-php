@@ -34,6 +34,7 @@ if (!isset($_SESSION['name'])) {
                 <th>SURNAME</th>
                 <th>CARD ID</th>
                 <th>ACCOUNT NR</th>
+                <th>AMOUNT</th>
                 <th>ADD</th>
                 <th>MINUS</th>
                 <th>DEL</th>
@@ -46,6 +47,7 @@ if (!isset($_SESSION['name'])) {
                 <td>Petraitis</td>
                 <td>30012000849</td>
                 <td>LT1234567890123456789</td>
+                <td>5000</td>
                 <td><button type="button" class="btn btn-outline-success add"
                   onclick=""></button></td>
                 <td><button type="button" class="btn btn-outline-danger minus"

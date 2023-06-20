@@ -8,6 +8,7 @@ $dataFile = '../storage/users.json';
 
 $userWriter = new UserCreate($dataFile);
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $username = $_POST['name'];
   $password = $_POST['passwd'];
@@ -39,6 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <section class="vh-100 gradient-custom">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
+
+    <div class="text-white-50">
+      <?php $userWriter->displayMsg(); ?>
+    </div>
+    
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card bg-dark text-white" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
@@ -58,6 +64,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <!-- <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p> -->
                 <button class="btn btn-outline-light btn-lg px-5" type="submit">Register</button>
               </form>
+            </div>
+
+            <div>
+              <p class="mb-0">
+                Already registered? <a href="../index.php" class="text-white-50 fw-bold">Login</a>
+              </p>
             </div>
 
           </div>
