@@ -8,7 +8,11 @@ $auth = new UserLogin();
 
 $auth->checkSession();
 $auth->logout();
-$auth->login(); ?>
+$auth->login(); 
+
+?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
