@@ -1,0 +1,11 @@
+{
+    "name": "sair/bank3",
+    "description": "bank_v3",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Sair\\Bank3\\": "src/"
+        }
+    },
+    "require": {}
+}
