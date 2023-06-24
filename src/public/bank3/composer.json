@@ -4,7 +4,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Sair\\Bank3\\": "src/"
+            "Bank3\\": "app/",
+            "App\\DB\\": "app/"
         }
     },
     "require": {}

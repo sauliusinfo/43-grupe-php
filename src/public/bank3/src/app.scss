@@ -1,52 +1,57 @@
 @import "~bootstrap/scss/bootstrap";
 
 .gradient-custom {
-    /* fallback for old browsers */
-    background: #6a11cb;
+  /* fallback for old browsers */
+  background: #6a11cb;
     
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
     
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
-    }
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+}
 
 .hero {
-    background: url('https://source.unsplash.com/cckf4TsHAuw');
-    height: 100vh;
-    width: 100vw;
-    background-size: cover;
-    background-repeat: no-repeat;
-    }
+  background: url('https://source.unsplash.com/cckf4TsHAuw');
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
 .table-transparent thead th,
 .table-transparent tbody th,
 .table-transparent tbody td {
-    // background-color: transparent;
-    background-color: rgba(0, 0, 0, 0.3);
-    vertical-align: middle;
-    }
+  // background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.3);
+  vertical-align: middle;
+}
 
 .btn {
-    &.add {
-        &::after {
-            content: '\2295';
-            font-size: 2.1em;
-            line-height: 1;
-        }
+  &.add {
+    &::after {
+      content: '\2295';
+      font-size: 2.1em;
+      line-height: 1;
     }
-    &.minus {
-        &::after {
-            content: '\2296';
-            font-size: 2.1em;
-            line-height: 1;
-        }
+  }
+  &.minus {
+    &::after {
+      content: '\2296';
+        font-size: 2.1em;
+        line-height: 1;
     }
-    &.delete {
-        &::after {
-            content: '\2297';
-            font-size: 2.1em;
-            line-height: 1;
-        }
-        }
+  }
+  &.delete {
+    &::after {
+      content: '\2297';
+        font-size: 2.1em;
+        line-height: 1;
     }
+  }
+}
+
+.form-control::placeholder {
+  color: crimson;
+  opacity: 1;
+}

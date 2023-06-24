@@ -12020,3 +12020,13 @@ textarea.form-control-lg {
   font-size: 2.1em;
   line-height: 1;
 }
+
+.form-control::-moz-placeholder {
+  color: crimson;
+  opacity: 1;
+}
+
+.form-control::placeholder {
+  color: crimson;
+  opacity: 1;
+}

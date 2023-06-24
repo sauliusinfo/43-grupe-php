@@ -1,6 +1,6 @@
 <?php
 
-class UserLogin {
+class UserLoginController {
 
     public function checkSession() : void
     {

@@ -1,6 +1,6 @@
 <?php
 
-class UserCreate {
+class UserCreateController {
 
     private $dataFile;
     

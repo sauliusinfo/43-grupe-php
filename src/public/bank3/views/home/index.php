@@ -1,37 +1,10 @@
-<?php
-
-session_start();
-
-require __DIR__ . '/controller/UserLogin.php';
-
-$auth = new UserLogin();
-
-$auth->checkSession();
-$auth->logout();
-$auth->login(); 
-
-?>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-  <link rel="stylesheet" href="./public/app.css">
-  <script type="text/javascript" src="./public/app.js"></script>
-</head>
-<body>
-
 <section class="vh-100 gradient-custom">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       
-    <div class="text-white-50">
-      <?php $auth->displayMsg(); ?>
-    </div>
+    <!-- <div class="text-white-50">
+      <?php //$auth->displayMsg(); ?>
+    </div> -->
     
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card bg-dark text-white" style="border-radius: 1rem;">
@@ -66,6 +39,3 @@ $auth->login();
     </div>
   </div>
 </section>
-
-</body>
-</html>
