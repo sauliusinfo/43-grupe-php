@@ -12015,6 +12015,11 @@ textarea.form-control-lg {
   font-size: 2.1em;
   line-height: 1;
 }
+.btn.edit::after {
+  content: "✎";
+  font-size: 2.1em;
+  line-height: 1;
+}
 .btn.delete::after {
   content: "⊗";
   font-size: 2.1em;

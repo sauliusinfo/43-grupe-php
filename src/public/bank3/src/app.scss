@@ -38,15 +38,22 @@
   &.minus {
     &::after {
       content: '\2296';
-        font-size: 2.1em;
-        line-height: 1;
+      font-size: 2.1em;
+      line-height: 1;
+    }
+  }
+  &.edit {
+    &::after {
+      content: '\00270E';
+      font-size: 2.1em;
+      line-height: 1;
     }
   }
   &.delete {
     &::after {
       content: '\2297';
-        font-size: 2.1em;
-        line-height: 1;
+      font-size: 2.1em;
+      line-height: 1;
     }
   }
 }

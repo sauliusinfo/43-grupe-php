@@ -24,36 +24,36 @@ class FileWriter implements DataBase {
     file_put_contents(__DIR__ . '/../data/' . $this->fileName . '.json', json_encode($this->data));
   }
   
-  public function create(array $userData) : void
+  public function create(array $accData) : void
   {
     $id = rand(100000000, 999999999);
-    $userData['id'] = $id;
-    $this->data[] = $userData;
+    $accData['id'] = $id;
+    $this->data[] = $accData;
   }
   
-  public function update(int $userId, array $userData) : void
+  public function update(int $accId, array $accData) : void
   {
-    foreach ($this->data as $key => $user) {
-      if ($user['id'] == $userId) {
-        $userData['id'] = $userId; // for safety
-        $this->data[$key] = $userData;
+    foreach ($this->data as $key => $acc) {
+      if ($acc['id'] == $accId) {
+        $accData['id'] = $accId; // for safety
+        $this->data[$key] = $accData;
       }
     }
   }
   
-  public function delete(int $userId) : void
+  public function delete(int $accId) : void
   {
-    foreach ($this->data as $key => $user) {
-      if ($user['id'] == $userId) {
+    foreach ($this->data as $key => $acc) {
+      if ($acc['id'] == $accId) {
         unset($this->data[$key]);
       }
     }
   }
 
-  public function show(int $userId) : array
+  public function show(int $accId) : array
   {
-    foreach ($this->data as $key => $user) {
-      if ($user['id'] == $userId) {
+    foreach ($this->data as $key => $acc) {
+      if ($acc['id'] == $accId) {
         return $this->data[$key];
       }
     }

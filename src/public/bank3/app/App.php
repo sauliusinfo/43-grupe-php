@@ -40,10 +40,10 @@ class App {
     // Auth middleware END
 
     // Bank
-    if ($_SERVER['REQUEST_METHOD'] == 'GET' && count($url) == 2 && $url[0] == 'bank') {
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && count($url) == 1 && $url[0] == 'bank') {
       return (new BankController)->index();
     }
-    if ($_SERVER['REQUEST_METHOD'] == 'GET' && count($url) == 3 && $url[0] == 'bank' && $url[1] == 'create') {
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && count($url) == 2 && $url[0] == 'bank' && $url[1] == 'create') {
       return (new BankController)->create();
     }
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($url) == 2 && $url[0] == 'bank' && $url[1] == 'store') {
