@@ -18,11 +18,7 @@
       <div class="mb-3">
         <input type="text" name="account-nr" id="account-nr" class="form-control bg-transparent text-white" 
           placeholder="* account number" required>
-      </div>
-      <div class="mb-3">
-        <input type="number" name="amount" id="amount" class="form-control bg-transparent text-white" 
-          value="0.00" readonly>
-          <p style="color: crimson; text-align: right;">* Required field</p>
+        <p style="color: crimson; text-align: right;">* Required field</p>
       </div>
       <div>
         <button type="submit" class="btn btn-outline-success add" style="width: 100%"></button>

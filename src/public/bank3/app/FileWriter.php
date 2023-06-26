@@ -26,9 +26,16 @@ class FileWriter implements DataBase {
   
   public function create(array $accData) : void
   {
-    $id = rand(100000000, 999999999);
-    $accData['id'] = $id;
-    $this->data[] = $accData;
+    // if (strlen($accData['name']) <= 3 || strlen($accData['surname']) <= 3) {
+    //   echo "<script>alert('Invalid name or surname. Must be more than 3 letters.');</script>";
+    //   return;
+    // } else {
+      $id = rand(100000000, 999999999);
+      $accData['id'] = $id;
+      $amount = 0;
+      $accData['amount'] = $amount;
+      $this->data[] = $accData;
+    // }
   }
   
   public function update(int $accId, array $accData) : void

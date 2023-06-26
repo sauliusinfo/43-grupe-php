@@ -3,6 +3,7 @@
 namespace Bank3;
 use Bank3\Controllers\HomeController;
 use Bank3\Controllers\BankController;
+use Bank3\Controllers\LoginController;
 
 class App {
 
@@ -13,7 +14,7 @@ class App {
     return self::router($url);
   }
 
-  static public function router($url)
+  static private function router($url)
   {
     if ($_SERVER['REQUEST_METHOD'] == 'GET' && count($url) == 1 && $url[0] == '') {
       return (new HomeController)->index();
@@ -22,21 +23,21 @@ class App {
     // var_dump($url);
 
     // Login
-    // if ($_SERVER['REQUEST_METHOD'] == 'GET' && count($url) == 1 && $url[0] == 'login') {
-    //   return (new LoginController)->index();
-    // }
-    // if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($url) == 1 && $url[0] == 'login') {
-    //     return (new LoginController)->login($_POST);
-    // }
-    // if ($_SERVER['REQUEST_METHOD'] == 'GET' && count($url) == 1 && $url[0] == 'logout') {
-    //     return (new LoginController)->logout();
-    // }
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && count($url) == 1 && $url[0] == 'login') {
+      return (new LoginController)->index();
+    }
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($url) == 1 && $url[0] == 'login') {
+        return (new LoginController)->login($_POST);
+    }
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && count($url) == 1 && $url[0] == 'logout') {
+        return (new LoginController)->logout();
+    }
 
     // Auth middleware
-    // if (!isset($_SESSION['email'])) {
-    //     header('Location: /login');
-    //     die;
-    // }
+    if (!isset($_SESSION['name'])) {
+        header('Location: /login');
+        die;
+    }
     // Auth middleware END
 
     // Bank
