@@ -68,9 +68,27 @@ class BankController {
   public function update(int $id, array $request)
   {
     $data = new FileWriter('bank');
-    $data->update($id, $request);
 
+    if (strlen($request['name']) <= 3)
+    {
+      Messages::addMessage('danger', 'Account name must be more than 3 characters');
+      // OldData::flashData($request);
+      header('Location: /bank/edit/'.$id);
+      
+    } elseif (strlen($request['surname']) <= 3) {
+        Messages::addMessage('danger', 'Account surname must be more than 3 characters');
+        // OldData::flashData($request);
+        header('Location: /bank/edit/'.$id);
+        
+    } elseif (strlen($request['card-id']) < 11) {
+        Messages::addMessage('danger', 'Account card-id is not correct');
+        // OldData::flashData($request);
+        header('Location: /bank/edit/'.$id);
+        
+    } else {
+    $data->update($id, $request);
     header('Location: /bank');
+    }
   }
 
   public function delete(int $id)
