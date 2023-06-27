@@ -47,7 +47,8 @@ usort($banks, function($a, $b) {
                 <td>
                   <div class="text-center">
                     <button type="button" class="btn btn-outline-danger delete"
-                      onclick="window.location.href='/bank/delete/<?= $bank['id'] ?>'"></button>
+                      onclick="window.location.href='/bank/delete/<?= $bank['id'] ?>'"
+                      <?= ($bank['amount'] > 0) ? 'disabled' : ''?>></button>
                   </div>
                 </td>
               </tr>

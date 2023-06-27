@@ -24,18 +24,29 @@ class FileWriter implements DataBase {
     file_put_contents(__DIR__ . '/../data/' . $this->fileName . '.json', json_encode($this->data));
   }
   
+  public static function generateIban()
+  {
+    $bankAccountNumber = sprintf('%016d', mt_rand(0, 99999999999999));
+    $countryCode = 'LT';
+    $iban = $countryCode . '00' . $bankAccountNumber;
+    $ibanDigits = str_split($iban);
+    $checksum = 0;
+    foreach ($ibanDigits as $digit) {
+        $checksum = ($checksum * 10 + intval($digit)) % 97;
+    }
+    $checksumDigits = sprintf('%02d', 98 - $checksum);
+    $iban = substr_replace($iban, $checksumDigits, 2, 2);
+
+    return $iban;
+  }
+
   public function create(array $accData) : void
   {
-    // if (strlen($accData['name']) <= 3 || strlen($accData['surname']) <= 3) {
-    //   echo "<script>alert('Invalid name or surname. Must be more than 3 letters.');</script>";
-    //   return;
-    // } else {
-      $id = rand(100000000, 999999999);
-      $accData['id'] = $id;
-      $amount = 0;
-      $accData['amount'] = $amount;
-      $this->data[] = $accData;
-    // }
+    $id = rand(100000000, 999999999);
+    $accData['id'] = $id;
+    $accData['account-nr'] = FileWriter::generateIban(); 
+    $accData['amount'] = 0;
+    $this->data[] = $accData;
   }
   
   public function update(int $accId, array $accData) : void

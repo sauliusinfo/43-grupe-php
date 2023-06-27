@@ -4,12 +4,14 @@ namespace Bank3\Controllers;
 
 use Bank3\App;
 use Bank3\FileWriter;
+use Bank3\Messages;
+use Bank3\OldData;
 
 class BankController {
 
   public function index()
   {
-    $data = new FileWriter('bank');    
+    $data = new FileWriter('bank');
     return App::view('bank/index', [
             'pageTitle' => 'Accounts list',
             'banks' => $data->showAll()
@@ -18,17 +20,38 @@ class BankController {
   
   public function create()
   {
+    $old = OldData::getFlashData();
     return App::view('bank/create', [
-            'pageTitle' => 'Create account'
+            'pageTitle' => 'Create account',
+            'old' => $old
           ]);
   }
 
   public function store(array $request)
   {
     $data = new FileWriter('bank');
-    $data->create($request);
 
-    header('Location: /bank');
+    if (strlen($request['name']) <= 3)
+    {
+      Messages::addMessage('danger', 'Account name must be more than 3 characters');
+      OldData::flashData($request);
+      header('Location: /bank/create');
+      
+    } elseif (strlen($request['surname']) <= 3) {
+        Messages::addMessage('danger', 'Account surname must be more than 3 characters');
+        OldData::flashData($request);
+        header('Location: /bank/create');
+        
+    } elseif (strlen($request['card-id']) < 11) {
+        Messages::addMessage('danger', 'Account card-id is not correct');
+        OldData::flashData($request);
+        header('Location: /bank/create');
+        
+    } else {
+      $data->create($request);
+      Messages::addMessage('success', 'Account created successfully');
+      header('Location: /bank');
+    }
   }
 
   public function edit(int $id)
@@ -64,6 +87,7 @@ class BankController {
     $data = new FileWriter('bank');
     $data->delete($id);
 
+    Messages::addMessage('success', 'Account deleted successfully');
     header('Location: /bank');
   }
 }

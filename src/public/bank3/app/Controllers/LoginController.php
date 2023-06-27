@@ -16,7 +16,7 @@ class LoginController {
     return App::view('auth/index', [
             'pageTitle' => 'Login',
             'inLogin' => true,
-            'old' => $old,
+            'old' => $old
           ]);
   }
 

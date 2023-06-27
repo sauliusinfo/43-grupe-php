@@ -27,10 +27,10 @@ class App {
       return (new LoginController)->index();
     }
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($url) == 1 && $url[0] == 'login') {
-        return (new LoginController)->login($_POST);
+      return (new LoginController)->login($_POST);
     }
     if ($_SERVER['REQUEST_METHOD'] == 'GET' && count($url) == 1 && $url[0] == 'logout') {
-        return (new LoginController)->logout();
+      return (new LoginController)->logout();
     }
 
     // Auth middleware
@@ -72,17 +72,17 @@ class App {
   }
 
   static public function view($path, $data = null)
-    {
-        if ($data) {
-            extract($data);
-        }
-
-        ob_start();
-
-        require __DIR__ . '/../views/top.php';
-        require __DIR__ . '/../views/' . $path . '.php';
-        require __DIR__ . '/../views/bottom.php';
-
-        return ob_get_clean();
+  {
+    if ($data) {
+      extract($data);
     }
+
+    ob_start();
+
+    require __DIR__ . '/../views/top.php';
+    require __DIR__ . '/../views/' . $path . '.php';
+    require __DIR__ . '/../views/bottom.php';
+
+    return ob_get_clean();
+  }
 }

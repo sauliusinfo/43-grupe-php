@@ -5,20 +5,16 @@
     <form action="/bank/store" method="post">
       <div class="mb-3">
         <input type="text" name="name" id="name" class="form-control bg-transparent text-white" 
-          placeholder="* name" required>
+          placeholder="* name" value="<?= $old['name'] ?? '' ?>" required>
       </div>
       <div class="mb-3">
         <input type="text" name="surname" id="surname" class="form-control bg-transparent text-white" 
-          placeholder="* surname" required>
+          placeholder="* surname" value="<?= $old['surname'] ?? '' ?>" required>
       </div>
       <div class="mb-3">
         <input type="text" name="card-id" id="card-id" class="form-control bg-transparent text-white" 
-          placeholder="* card id" required>
-      </div>
-      <div class="mb-3">
-        <input type="text" name="account-nr" id="account-nr" class="form-control bg-transparent text-white" 
-          placeholder="* account number" required>
-        <p style="color: crimson; text-align: right;">* Required field</p>
+          placeholder="* card id" value="<?= $old['card-id'] ?? '' ?>" required>
+          <p style="color: crimson; text-align: right;">* Required field</p>
       </div>
       <div>
         <button type="submit" class="btn btn-outline-success add" style="width: 100%"></button>
