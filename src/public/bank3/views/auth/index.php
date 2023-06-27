@@ -25,7 +25,9 @@
 
             <div>
               <p class="mb-0">
-                Don't have an account? <a href="#" class="text-white-50 fw-bold">Sign Up</a>
+                <!-- Don't have an account? <a href="#" class="text-white-50 fw-bold">Sign Up</a> -->
+                Back to <a href="<?= URL ?>" class="text-white-50 fw-bold">Home</a>
+
               </p>
             </div>
 

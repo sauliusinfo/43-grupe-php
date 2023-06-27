@@ -8,19 +8,24 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
+
+        <?php if (isset($_SESSION['name'])) : ?>
+          
           <li class="nav-item">
             <a class="nav-link" href="<?= URL . 'bank' ?>">Accounts</a>
           </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="<?= URL . 'bank/create' ?>">Add Client</a>
           </li>
+          
           <li class="nav-item">
-            <?php if (isset($_SESSION['name'])) : ?>
-              <a class="nav-link" href="<?= URL . 'logout' ?>">Logout</a>  
+            <a class="nav-link" href="<?= URL . 'logout' ?>">Logout</a>  
             <?php else : ?>
-              <a class="nav-link" href="<?= URL . 'login' ?>">Login</a>
+            <a class="nav-link" href="<?= URL . 'login' ?>">Login</a>
             <?php endif ?>
           </li>
+
         </ul>
       </div>
   </div>
