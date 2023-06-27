@@ -48,9 +48,9 @@ class BankController {
         header('Location: /bank/create');
         
     } else {
-      $data->create($request);
-      Messages::addMessage('success', 'Account created successfully');
-      header('Location: /bank');
+        $data->create($request);
+        Messages::addMessage('success', 'Account created successfully');
+        header('Location: /bank');
     }
   }
 
@@ -72,22 +72,22 @@ class BankController {
     if (strlen($request['name']) <= 3)
     {
       Messages::addMessage('danger', 'Account name must be more than 3 characters');
-      // OldData::flashData($request);
       header('Location: /bank/edit/'.$id);
       
     } elseif (strlen($request['surname']) <= 3) {
         Messages::addMessage('danger', 'Account surname must be more than 3 characters');
-        // OldData::flashData($request);
         header('Location: /bank/edit/'.$id);
         
     } elseif (strlen($request['card-id']) < 11) {
         Messages::addMessage('danger', 'Account card-id is not correct');
-        // OldData::flashData($request);
         header('Location: /bank/edit/'.$id);
         
+    } elseif ($request['amount'] < 0) {
+        Messages::addMessage('danger', "Amount can't be negative");
+        header('Location: /bank/edit/'.$id);
     } else {
-    $data->update($id, $request);
-    header('Location: /bank');
+        $data->update($id, $request);
+        header('Location: /bank');
     }
   }
 
@@ -105,7 +105,7 @@ class BankController {
     $data = new FileWriter('bank');
     $data->delete($id);
 
-    Messages::addMessage('success', 'Account deleted successfully');
+    Messages::addMessage('success', 'Account ('.$id.') deleted successfully');
     header('Location: /bank');
   }
 }

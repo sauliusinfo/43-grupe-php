@@ -21,7 +21,7 @@
       <div class="mb-3">
         <label for="account-nr"><span style="color: crimson;">*</span>Account Number</label>
         <input type="text" name="account-nr" id="account-nr" class="form-control bg-transparent text-white" 
-          value="<?= $bank['account-nr'] ?>" required>
+          value="<?= $bank['account-nr'] ?>" readonly required>
       </div>
       <div class="mb-3">
         <label for="amount">Amount</label>
