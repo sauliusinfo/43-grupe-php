@@ -1,5 +1,5 @@
 <section>
-  <div class="container-fluid hero d-flex flex-column align-items-center py-3">
+  <div class="container-fluid hero d-flex flex-column align-items-center py-3 gradient-custom">
     <h3 class="text-light text-center mt-5 py-3">Edit client data</h3>
     
     <form action="/bank/update/<?= $bank['id'] ?>" method="post">

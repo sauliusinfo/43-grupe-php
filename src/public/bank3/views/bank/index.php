@@ -5,7 +5,7 @@ usort($banks, function($a, $b) {
 ?>
 
 <section>
-  <div class="container-fluid hero d-flex flex-column align-items-center py-3">
+  <div class="container-fluid hero d-flex flex-column align-items-center py-3 gradient-custom">
     <h3 class="text-light text-center mt-5 py-3">Accounts</h3>
     
     <table class="table table-dark table-sm table-transparent">

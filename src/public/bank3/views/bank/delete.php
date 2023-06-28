@@ -1,5 +1,5 @@
 <section>
-  <div class="container-fluid hero d-flex flex-column align-items-center py-3">
+  <div class="container-fluid hero d-flex flex-column align-items-center py-3 gradient-custom">
     <h3 class="text-light text-center mt-5 py-3">Are you sure you want to delete this account?</h3>
     
     <form action="/bank/destroy/<?= $bank['id'] ?>" method="post">

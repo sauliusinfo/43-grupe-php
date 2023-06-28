@@ -1,5 +1,5 @@
 <section>
-  <div class="container-fluid hero d-flex flex-column align-items-center py-3">
+  <div class="container-fluid hero d-flex flex-column align-items-center py-3 gradient-custom">
     <h3 class="text-light text-center mt-5 py-3">Create new client</h3>
     
     <form action="/bank/store" method="post">
