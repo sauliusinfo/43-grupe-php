@@ -12034,3 +12034,31 @@ textarea.form-control-lg {
   color: crimson;
   opacity: 1;
 }
+
+.alert {
+  position: absolute;
+  margin: 75px 15px;
+}
+
+.alert-success {
+  background: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+
+.alert-danger {
+  background: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+.gradient-custom-text {
+  background: linear-gradient(to left, rgb(112, 23, 209), rgb(43, 123, 252));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-xl {
+  font-size: 5em;
+}
