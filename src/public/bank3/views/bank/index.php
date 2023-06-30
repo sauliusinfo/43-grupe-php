@@ -58,6 +58,8 @@ usort($banks, function($a, $b) {
 
     </table>
 
-    <button type="button" class="btn btn-outline-danger">Support</button>
+    <div class="position-absolute bottom-0 start-50 translate-middle-x" style="margin-bottom: 10px;">
+      <button type="button" class="btn btn-outline-danger">Support</button>
+    </div>
   </div>
 </section>
