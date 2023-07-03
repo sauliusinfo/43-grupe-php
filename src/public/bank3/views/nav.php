@@ -7,10 +7,10 @@
               <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
 
+        
+        <ul class="navbar-nav">
         <?php if (isset($_SESSION['name'])) : ?>
-          
           <li class="nav-item">
             <a class="nav-link" href="<?= URL . 'bank' ?>">Accounts</a>
           </li>
@@ -23,10 +23,18 @@
             <a class="nav-link" href="<?= URL . 'logout' ?>">Logout</a>  
             <?php else : ?>
             <a class="nav-link" href="<?= URL . 'login' ?>">Login</a>
-            <?php endif ?>
           </li>
-
+        <?php endif; ?>
         </ul>
+
+        <?php if (isset($_SESSION['name'])) : ?>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item text-right">
+            <span class="nav-link">Logged in : <?= $_SESSION['name'] ?></span>
+          </li>
+        </ul>
+        <?php endif; ?>
+
       </div>
   </div>
 </nav>
