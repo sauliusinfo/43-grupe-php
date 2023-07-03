@@ -4,14 +4,29 @@ namespace Bank3;
 use Bank3\Controllers\HomeController;
 use Bank3\Controllers\BankController;
 use Bank3\Controllers\LoginController;
+use Bank3\FileWriter;
+use Bank3\DatabaseWriter;
 
 class App {
+
+  // const DB = 'file';
+  const DB = 'database';
 
   static public function start()
   {
     $url = explode('/', $_SERVER['REQUEST_URI']);
     array_shift($url);
     return self::router($url);
+  }
+
+  static public function get($table)
+  {
+    if (self::DB == 'file') {
+      return new FileWriter($table);
+    }
+    elseif (self::DB == 'database') {
+      return new DatabaseWriter($table);
+    }
   }
 
   static private function router($url)

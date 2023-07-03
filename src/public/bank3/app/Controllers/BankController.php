@@ -3,7 +3,7 @@
 namespace Bank3\Controllers;
 
 use Bank3\App;
-use Bank3\FileWriter;
+// use Bank3\FileWriter;
 use Bank3\Messages;
 use Bank3\OldData;
 
@@ -11,7 +11,10 @@ class BankController {
 
   public function index()
   {
-    $data = new FileWriter('bank');
+    //$data = new FileWriter('bank');
+
+    $data = App::get('bank');
+
     return App::view('bank/index', [
             'pageTitle' => 'Accounts list',
             'banks' => $data->showAll()
@@ -29,7 +32,9 @@ class BankController {
 
   public function store(array $request)
   {
-    $data = new FileWriter('bank');
+    // $data = new FileWriter('bank');
+
+    $data = App::get('bank');
 
     if (strlen($request['name']) <= 3)
     {
@@ -56,7 +61,10 @@ class BankController {
 
   public function edit(int $id)
   {
-    $data = new FileWriter('bank');
+    // $data = new FileWriter('bank');
+
+    $data = App::get('bank');
+
     $bank = $data->show($id);
     
     return App::view('bank/edit', [
@@ -67,7 +75,9 @@ class BankController {
   
   public function update(int $id, array $request)
   {
-    $data = new FileWriter('bank');
+    // $data = new FileWriter('bank');
+
+    $data = App::get('bank');
 
     if (strlen($request['name']) <= 3)
     {
@@ -93,7 +103,10 @@ class BankController {
 
   public function delete(int $id)
   {
-    $bank = (new FileWriter('bank'))->show($id);
+    // $bank = (new FileWriter('bank'))->show($id);
+
+    $bank = (App::get('bank'))->show($id);
+
     return App::view('bank/delete', [
             'pageTitle' => 'Confirm account delete',
             'bank' => $bank
@@ -102,10 +115,13 @@ class BankController {
 
   public function destroy(int $id)
   {
-    $data = new FileWriter('bank');
+    // $data = new FileWriter('bank');
+
+    $data = App::get('bank');
+
     $data->delete($id);
 
-    Messages::addMessage('success', 'Account ('.$id.') deleted successfully');
+    Messages::addMessage('success', 'Account with id__'.$id.' deleted successfully');
     header('Location: /bank');
   }
 }
