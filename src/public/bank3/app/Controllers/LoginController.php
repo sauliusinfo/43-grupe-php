@@ -4,7 +4,6 @@ namespace Bank3\Controllers;
 
 use Bank3\OldData;
 use Bank3\App;
-use Bank3\FileWriter;
 use Bank3\Messages;
 
 class LoginController {
