@@ -81,4 +81,13 @@ class FileWriter implements DataBase {
   {
     return $this->data;
   }
+
+  public function getUserByEmailAndPass(): ?array
+  {
+    $users = (new FileWriter('users'))->showAll();
+    
+    foreach ($users as $user) {
+      return $user;
+    }
+  }
 }

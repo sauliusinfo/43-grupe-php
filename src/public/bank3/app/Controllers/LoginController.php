@@ -25,24 +25,19 @@ class LoginController {
     $username = $data['name'] ?? '';
     $password = $data['password'] ?? '';
     
-    $users = (new FileWriter('users'))->showAll();
+    $user = App::get('users')->getUserByEmailAndPass($username, $password);
+    if ($user) {
+      $_SESSION['name'] = $username;
 
-    foreach ($users as $user) {
-      if ($user['name'] == $username && $user['password'] == md5($password)) 
-      {
-        $_SESSION['name'] = $username;
-        // $_SESSION['email'] = $user['email'];
-        
-        Messages::addMessage('success', 'You are logged in');
-        header('Location: /');
-        die;
-      }
+      Messages::addMessage('success', 'You are logged in');
+      header('Location: /');
+      die;
+    } else {
+      Messages::addMessage('danger', 'Wrong email or password');
+      OldData::flashData($data);
+      header('Location: /login');
+      die;
     }
-
-    Messages::addMessage('danger', 'Wrong email or password');
-    OldData::flashData($data);
-    header('Location: /login');
-    die;
   }
 
   public function logout()
