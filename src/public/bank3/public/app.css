@@ -12000,7 +12000,7 @@ textarea.form-control-lg {
 .table-transparent thead th,
 .table-transparent tbody th,
 .table-transparent tbody td {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.2);
   vertical-align: middle;
 }
 
