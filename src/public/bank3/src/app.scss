@@ -5,10 +5,10 @@
   background: #6a11cb;
     
   /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+  background: -webkit-linear-gradient(to left, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
     
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+  background: linear-gradient(to left, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
 }
 
 .hero {
@@ -23,7 +23,7 @@
 .table-transparent tbody th,
 .table-transparent tbody td {
   // background-color: transparent;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
   vertical-align: middle;
 }
 
@@ -82,7 +82,7 @@
 // error 404
 .gradient-custom-text {
   // background: linear-gradient(to right, #FFC371, #FF5F6D);
-  background: linear-gradient(to left, rgba(112, 23, 209, 1), rgba(43, 123, 252, 1));
+  background: linear-gradient(to right, rgba(112, 23, 209, 1), rgba(43, 123, 252, 1));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
