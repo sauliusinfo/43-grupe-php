@@ -30,7 +30,7 @@
         <?php if (isset($_SESSION['name'])) : ?>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item text-right">
-            <span class="nav-link">Logged in : <?= $_SESSION['name'] ?></span>
+            <span class="nav-link">User | <?= $_SESSION['name'] ?></span>
           </li>
         </ul>
         <?php endif; ?>
